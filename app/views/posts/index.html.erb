@@ -1,0 +1,32 @@
+<style type="text/css">
+ 
+    body {
+        background:url(/assets/bg2.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+ 
+</style>
+<hr>
+<%= link_to '새글', new_post_path %>
+<table>
+
+    <tbody>
+        
+        <% @posts.each do |p| %>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><%= p.title %></td>
+            <td>
+                <%= link_to '보기', p %>
+                <%= link_to '수정', edit_post_path(p) %>
+                <%= link_to '삭제', p, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= will_paginate @posts %>
